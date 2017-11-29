@@ -7,6 +7,8 @@ end
 
 # Forms made easy for Rails! It's tied to a simple DSL, with no opinion on markup.
 gem 'simple_form'
+# Brings back `assigns` and `assert_template` to your Rails tests
+gem 'rails-controller-testing'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
