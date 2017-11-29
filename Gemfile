@@ -15,6 +15,7 @@ gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
 gem "slim-rails"
 # Flexible authentication solution for Rails with Warden.
 gem 'devise'
+gem 'omniauth-facebook'
 # A Ruby gem to load environment variables from `.env`.
 gem 'dotenv-rails'
 
