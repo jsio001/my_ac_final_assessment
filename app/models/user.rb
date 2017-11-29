@@ -7,6 +7,6 @@ class User < ApplicationRecord
   has_many :notes
 
   has_many :likes
-  has_many :notes, through: :likes
+  has_many :likednotes, class_name: "Note", through: :likes
 
 end

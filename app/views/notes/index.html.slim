@@ -1,21 +1,9 @@
-h1 Pages#Home
+h1 Note#index - MY NOTES
 br
 h5 = link_to 'Add New Note', new_note_path
 br
 .container-fluid
   .row
-  .row
-    .col-3
-      table.table
-        thead
-          tr
-            th Users
-        tbody
-          - User.all.each do |user|
-            tr
-              td #{ user.email }
-              - if user_signed_in?
-                td Follow OR UnFollow button
     .col-8
       table.table
         thead
@@ -23,7 +11,7 @@ br
             th Title
             th Body
         tbody
-          - Note.all.each do |note|
+          - @notes.each do |note|
             tr
               td #{ note.title }
               td #{ note.body }

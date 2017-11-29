@@ -10,6 +10,7 @@ html
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
 
   body
+    = render partial: "pages/navbar"
     - flash.each do |name, msg|
       = content_tag :div, msg, class: name
     = yield

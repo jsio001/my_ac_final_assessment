@@ -1,0 +1,9 @@
+h1 Note#New
+br
+br
+.container-fluid
+  .row
+    = simple_form_for @note, url: notes_path, method: :post do |f|
+      = f.input :title
+      = f.input :body
+      = f.button :submit

@@ -1,0 +1,18 @@
+nav.narbar.navbar-expand-lg.bg-white.sticky-top.fixed-top
+  h5
+  #navbarText.collapse.navbar-collapse
+    .card.mr-sm-2.px-3.border.rounded
+      .nav
+        .nav-link = link_to "Home", root_path
+    - if user_signed_in?
+      .card.mr-sm-2.px-3.border.rounded
+        .nav
+          .nav-link #{ current_user.email } (ID: #{ current_user.id })
+          .nav-link = link_to 'My Dashboard', notes_path
+          .nav-link = link_to 'Logout', destroy_user_session_path, method: :delete
+    - else
+      .card.mr-sm-2.px-3.border.rounded
+        .nav
+          .nav-link = link_to 'Login', new_user_session_path
+          .nav-link = "or"
+          .nav-link = link_to 'Sign Up', new_user_registration_path

@@ -1,8 +1,8 @@
 class LikesController < ApplicationController
-  before_action :prepare_user, :prepare_note
+  before_action :prepare_note, :prepare_user
 
   def create
-    @like = @note.likes.save(like_params)
+    @like = @user.likes.save(like_params)
     flash.now[:notice] = "Like."
   end
 

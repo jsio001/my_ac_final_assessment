@@ -1,0 +1,11 @@
+h1 Note#Edit
+br
+br
+.container-fluid
+  .row
+    = simple_form_for @note, url: note_path(@note), method: :put do |f|
+      = f.input :title
+      = f.input :body
+      = f.button :submit
+  .row
+    p = link_to 'Back to Note#show', note_path(@note)

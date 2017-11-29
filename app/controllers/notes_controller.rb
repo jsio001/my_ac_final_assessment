@@ -1,9 +1,12 @@
 class NotesController < ApplicationController
+  before_action :set_note, except: [:new, :create, :index]
+  before_action :prepare_user
+
   def show
   end
 
   def index
-    @notes = Note.all
+    @notes = @user.notes.all
   end
 
   def new
@@ -11,7 +14,7 @@ class NotesController < ApplicationController
   end
 
   def create
-    @note = Note.new(note_params)
+    @note = @user.notes.new(note_params)
     if @note.save
       flash[:notice] = "Note added."
       redirect_to root_path
@@ -43,11 +46,15 @@ class NotesController < ApplicationController
 private
 
   def note_params
-    params.require(:note).permit(:title, :description)
+    params.require(:note).permit(:title, :body)
   end
 
   def set_note
     @note = Note.find(params[:id])
+  end
+
+  def prepare_user
+    @user = current_user
   end
 
 end
