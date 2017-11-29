@@ -9,4 +9,10 @@ class User < ApplicationRecord
   has_many :likes
   has_many :likednotes, class_name: "Note", through: :likes
 
+  has_many :subscriber_users, class_name: "Relation", foreign_key: :poster_id, dependent: :destroy
+  has_many :subscribers, through: :subscriber_users
+
+  has_many :poster_users, class_name: "Relation", foreign_key: :subscriber_id
+  has_many :posters, through: :poster_users
+
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171129054237) do
+ActiveRecord::Schema.define(version: 20171129092319) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,16 @@ ActiveRecord::Schema.define(version: 20171129054237) do
     t.index ["user_id"], name: "index_notes_on_user_id"
   end
 
+  create_table "relations", force: :cascade do |t|
+    t.bigint "subscriber_id"
+    t.bigint "poster_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["poster_id"], name: "index_relations_on_poster_id"
+    t.index ["subscriber_id", "poster_id"], name: "index_relations_on_subscriber_id_and_poster_id", unique: true
+    t.index ["subscriber_id"], name: "index_relations_on_subscriber_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -46,4 +56,6 @@ ActiveRecord::Schema.define(version: 20171129054237) do
 
   add_foreign_key "likes", "notes"
   add_foreign_key "likes", "users"
+  add_foreign_key "relations", "users", column: "poster_id"
+  add_foreign_key "relations", "users", column: "subscriber_id"
 end

@@ -6,4 +6,7 @@ Rails.application.routes.draw do
   resources :notes do
     resources :likes, only: [:create, :destroy]
   end
+
+  resources :relations
+  
 end
