@@ -11,6 +11,9 @@ gem 'simple_form'
 gem 'rails-controller-testing'
 # A library for generating fake data such as names, addresses, and phone numbers.
 gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
+# Slim templates generator for Rails 3, 4 and 5
+gem "slim-rails"
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
 # Use postgresql as the database for Active Record
