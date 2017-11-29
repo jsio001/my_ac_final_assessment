@@ -25,7 +25,7 @@ private
   end
 
   def prepare_note
-    @note = Note.find(params[:id])
+    @note = Note.find(params[:note_id])
   end
 
 end
