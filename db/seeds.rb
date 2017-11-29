@@ -14,18 +14,39 @@ unless User.count > 5
   p "users created"
 end
 
-unless Note.count > 20
-  5.times do
-    Note.create(title: "Note No."+ Faker::Number.between(1, 40).to_s, body: Faker::Hipster.paragraph(2, false, 4), user_id: 1)
+unless Note.count > 40
+  10.times do
+    Note.create(title: "Seed No."+ Faker::Number.between(1, 10).to_s, body: Faker::Hipster.paragraph(2, false, 4), user_id: 1)
   end
-  5.times do
-    Note.create(title: "Note No."+ Faker::Number.between(1, 40).to_s, body: Faker::Hipster.paragraph(2, false, 4), user_id: 2)
+  10.times do
+    Note.create(title: "Seed No."+ Faker::Number.between(11, 20).to_s, body: Faker::Hipster.paragraph(2, false, 4), user_id: 2)
   end
-  5.times do
-    Note.create(title: "Note No."+ Faker::Number.between(1, 40).to_s, body: Faker::Hipster.paragraph(2, false, 4), user_id: 3)
+  10.times do
+    Note.create(title: "Seed No."+ Faker::Number.between(21, 30).to_s, body: Faker::Hipster.paragraph(2, false, 4), user_id: 3)
   end
-  5.times do
-    Note.create(title: "Note No."+ Faker::Number.between(1, 40).to_s, body: Faker::Hipster.paragraph(2, false, 4), user_id: 4)
+  10.times do
+    Note.create(title: "Seed No."+ Faker::Number.between(31, 40).to_s, body: Faker::Hipster.paragraph(2, false, 4), user_id: 4)
+  end
+  10.times do
+    Note.create(title: "Seed No."+ Faker::Number.between(41, 50).to_s, body: Faker::Hipster.paragraph(2, false, 4), user_id: 5)
   end
   p "notes created"
+end
+
+unless Like.count > 25
+  5.times do
+    Like.create(note_id: Faker::Number.between(41, 50), user_id: 1)
+  end
+  5.times do
+    Like.create(note_id: Faker::Number.between(1, 10), user_id: 2)
+  end
+  5.times do
+    Like.create(note_id: Faker::Number.between(11, 20), user_id: 3)
+  end
+  5.times do
+    Like.create(note_id: Faker::Number.between(21, 30), user_id: 4)
+  end
+  5.times do
+    Like.create(note_id: Faker::Number.between(31, 40), user_id: 5)
+  end
 end
