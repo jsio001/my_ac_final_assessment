@@ -1,12 +1,18 @@
 class NotesController < ApplicationController
+  before_action :authenticate_user!, :prepare_user
   before_action :set_note, except: [:new, :create, :index]
-  before_action :prepare_user
 
   def show
   end
 
   def index
     @notes = @user.notes.all
+    if user_signed_in?
+      @following = current_user.posters
+      @tofollow = User.all.reject{|user| user == current_user} - @following
+    else
+      @following = User.all
+    end
   end
 
   def new

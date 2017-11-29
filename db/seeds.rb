@@ -49,4 +49,11 @@ unless Like.count > 25
   5.times do
     Like.create(note_id: Faker::Number.between(31, 40), user_id: 5)
   end
+
+  unless Relation.count > 10
+    Relation.create(subscriber_id: 1, poster_id: 2)
+    Relation.create(subscriber_id: 1, poster_id: 3)
+    Relation.create(subscriber_id: 1, poster_id: 4)
+  end
+
 end

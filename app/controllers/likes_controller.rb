@@ -1,5 +1,5 @@
 class LikesController < ApplicationController
-  before_action :prepare_note, :prepare_user
+  before_action :authenticate_user!, :prepare_note, :prepare_user
 
   def create
     @like = @user.likes.save(like_params)

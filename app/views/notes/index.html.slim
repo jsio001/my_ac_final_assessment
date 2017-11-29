@@ -6,7 +6,7 @@ br
   .row
     .col-8
       table.table
-        thead
+        thead Notes Feed (mine & users followed)
           tr
             th Title
             th Body
@@ -17,3 +17,15 @@ br
               td #{ note.body }
               td created by user ID: #{ note.user_id }
               td = link_to 'Show', note_path(note)
+    .col-2
+      table.table
+        thead Users to Follow
+        tbody
+          - User.all.each do |user|
+            tr
+              td #{ user.email } (ID: #{ user.id })
+              td
+                - if Relation.find_by(subscriber_id: current_user.id, poster_id: user.id) == nil
+                  button = link_to 'Follow', follow_path(user), method: :post
+                - else
+                  button = link_to 'UnFollow', unfollow_path(user), method: :delete

@@ -4,18 +4,37 @@ h5 = link_to 'Add New Note', new_note_path
 br
 .container-fluid
   .row
-  .row
     .col-3
-      table.table
-        thead
-          tr
-            th Users
-        tbody
-          - User.all.each do |user|
+      - if user_signed_in?
+        table.table
+          thead
             tr
-              td #{ user.email }
-              - if user_signed_in?
-                td Follow OR UnFollow button
+              th To Follow
+          tbody
+            - @tofollow.each do |user|
+              tr
+                td #{ user.email } ID: #{ user.id }
+                td
+                  button = link_to 'Follow', follow_path(user), method: :post
+        table.table
+          thead
+            tr
+              th Following
+          tbody
+            - @following.each do |user|
+              tr
+                td #{ user.email } ID: #{ user.id }
+                td
+                  button = link_to 'UnFollow', unfollow_path(user), method: :delete
+      - else
+        table.table
+          thead
+            tr
+              th All Users
+          tbody
+            - @following.each do |user|
+              tr
+                td #{ user.email } ID: #{ user.id }
     .col-8
       table.table
         thead
@@ -28,4 +47,4 @@ br
               td #{ note.title }
               td #{ note.body }
               td created by user ID: #{ note.user_id }
-              td = link_to 'Show', note_path(note)
+              td = link_to 'Show', note_path(note.id)
