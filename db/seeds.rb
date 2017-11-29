@@ -5,3 +5,6 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+unless Note.count > 10
+  Note.create(title: "Note No."+ Faker::Number.between(1, 10).to_s, body: Faker::Hipster.paragraph(2, false, 4))
+end
