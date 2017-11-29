@@ -13,6 +13,8 @@ gem 'rails-controller-testing'
 gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
 # Slim templates generator for Rails 3, 4 and 5
 gem "slim-rails"
+# Flexible authentication solution for Rails with Warden.
+gem 'devise'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
