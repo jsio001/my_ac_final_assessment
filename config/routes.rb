@@ -6,8 +6,7 @@ Rails.application.routes.draw do
   post 'pages/follow/:id', to: 'pages#relate', as: :follow
   delete 'pages/unfollow/:poster_id', to: 'pages#unrelate', as: :unfollow
 
-  resources :notes do
-    resources :likes, only: [:create, :destroy]
-  end
-
+  resources :notes
+  resources :likes, only: [:create, :destroy]
+  
 end

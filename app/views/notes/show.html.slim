@@ -9,7 +9,7 @@ br
     button = link_to 'Edit', edit_note_path(@note)
     button = link_to 'Delete', note_path(@note), method: :delete
 
-  - if @note.likes.find_by(user_id: current_user.id) == nil
-    button = link_to 'Like', note_likes_path(@note), method: :post
-  - else
-    button = link_to 'UnLike', note_like_path(@note,@note.likes.find_by(user_id: current_user.id).id), method: :delete
+= simple_form_for @note, url: likes_path, method: :post do |f|
+  = hidden_field_tag :user_id, current_user.id
+  = hidden_field_tag :note_id, @note.id
+  = f.submit 'Like'

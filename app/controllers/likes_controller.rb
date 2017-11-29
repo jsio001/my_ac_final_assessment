@@ -1,31 +1,24 @@
 class LikesController < ApplicationController
-  before_action :authenticate_user!, :prepare_note, :prepare_user
+  before_action :authenticate_user!
 
   def create
-    @like = @user.likes.save(like_params)
+    @like = @note.likes.new(get_params)
+    byebug
+    @like.save
     flash.now[:notice] = "Like."
+    redirect_to note_path(@note)
   end
 
   def destroy
+    @note = Note.find(params[:id])
+    @like = Like.find_by(note_id: @note.id)
     @like.destroy
     flash[:notice] = "UnLike."
   end
 
 private
-  def like_params
-    params.require(:like).permit(:note_id, :user_id)
-  end
-
-  def set_like
-    @like = Like.find(params[:id])
-  end
-
-  def prepare_user
-    @user = current_user
-  end
-
-  def prepare_note
-    @note = Note.find(params[:note_id])
+  def get_params
+    params.permit(:note_id, :user_id)
   end
 
 end

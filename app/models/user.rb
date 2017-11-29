@@ -6,9 +6,6 @@ class User < ApplicationRecord
   # :rememberable, :trackable, :validatable
   has_many :notes
 
-  has_many :likes
-  has_many :likednotes, class_name: "Note", through: :likes
-
   has_many :subscriber_users, class_name: "Relation", foreign_key: :poster_id, dependent: :destroy
   has_many :subscribers, through: :subscriber_users
 
