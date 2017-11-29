@@ -5,4 +5,8 @@ class User < ApplicationRecord
          :recoverable
   # :rememberable, :trackable, :validatable
   has_many :notes
+
+  has_many :likes
+  has_many :notes, through: :likes
+
 end
