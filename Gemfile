@@ -9,7 +9,8 @@ end
 gem 'simple_form'
 # Brings back `assigns` and `assert_template` to your Rails tests
 gem 'rails-controller-testing'
-
+# A library for generating fake data such as names, addresses, and phone numbers.
+gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
 # Use postgresql as the database for Active Record
