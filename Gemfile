@@ -40,8 +40,10 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   # RSpec for Rails-3+
   gem 'rspec-rails', '~> 3.6'
-  # Collection of testing matchers extracted from Shoulda 
+  # Collection of testing matchers extracted from Shoulda
   gem 'shoulda-matchers', '~> 3.1'
+  # Factory Bot ♥ Rails
+  gem 'factory_bot_rails'
 end
 
 group :development do
